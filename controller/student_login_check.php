@@ -29,19 +29,19 @@ mysql_select_db("dbms", $con);
   }
   else if($row[name]=='registration')
   {
-	  header('Location: student_registration.php');
+	  header('Location: ../student_registration.php');
   }
   else if($row[name]=='add')
   {
-	  header('Location: student_add.php');
+	  header('Location: ../student_add.php');
   }
   else if($row[name]=='drop')
   {
-	  header('Location: student_drop.php');
+	  header('Location: ../student_drop.php');
   }
   else if($row[name]=='overload')
   {
-	  header('Location: student_overload.php');
+	  header('Location: ../student_overload.php');
   }
   mysql_close($con)
   
