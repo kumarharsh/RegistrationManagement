@@ -1,5 +1,5 @@
 /*
- * jQuery Nivo Slider v2.5.1
+ * jQuery Nivo Slider v2.7.1
  * http://nivo.dev7studios.com
  *
  * Copyright 2011, Gilbert Pellegrom
@@ -9,16 +9,23 @@
  * March 2010
  */
  
- 
-/* The Nivo Slider styles */
 .nivoSlider {
-	position:relative;
+    position:relative;
+    width:848px; /* Change this to your images width */
+    height:289px; /* Change this to your images height */
+    background:url(images/loading.gif) no-repeat 50% 50%;
 }
 .nivoSlider img {
-	position:absolute;
-	top:0px;
-	left:0px;
+    position:absolute;
+    top:0px;
+    left:0px;
+    display:none;
 }
+.nivoSlider a {
+    border:0;
+    display:block;
+}
+ 
 /* If an image is wrapped in a link */
 .nivoSlider a.nivo-imageLink {
 	position:absolute;

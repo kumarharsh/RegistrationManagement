@@ -1,0 +1,61 @@
+/* 
+ * defaults.scss
+ * Author: Kumar Harsh
+ * Dated: 18/3/2012
+ *
+ * This file stores the default swatches and variables to be
+ * used in the css files
+ */
+
+// Defining constants
+// colours
+$pl-verde      : #95D905;
+$pl-oranje     : #f69100;
+
+$button-blue   : #888BED;
+$border-blue   : #6666FF;
+
+$text-normal   : #000000;
+$text-highlight: #6fc300;
+$text-lowlight : #666666;
+$text-links    : #6fc300;
+
+$bg-white      : #ffffff;
+$bg-light      : #f0ffd6;
+$input-forms   : #3f3f3f;
+$border-light  : #CCCCCC;
+
+$default-border-radius : 5px !default;
+
+// typography
+$fonts         : "Trebuchet MS",Verdana,sans-serif;
+
+@mixin link-style($color) {
+    text-decoration: none;
+    color: $color;
+    &:visited { color:$color; }
+    &:hover { color:darken($color,20%); }
+}
+
+@mixin normal-font-style {
+    font: {
+        family: $fonts;
+        color:$text-normal;
+        size: 12px;
+        line-height:15px;
+        weight:normal;
+    }
+}
+
+
+@mixin border($color, $width, $side:all) {
+    // if there is a side defined, just generate
+    // border style for that side
+    $border:border;
+    @if $side!=all { $border:border-#{$side} };
+    #{$border}: {
+        width: $width;
+        style: solid;
+        color: $color;
+    }
+}
