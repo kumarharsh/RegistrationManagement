@@ -1,0 +1,59 @@
+/* 
+ * defaults.scss
+ * Author: Kumar Harsh
+ * Dated: 18/3/2012
+ *
+ * This file stores the default swatches and variables to be
+ * used in the css files
+ */
+@font-face {
+  font-family: 'Calluna';
+  src: url("type/CallunaSansRegular-webfont.eot");
+  src: url("type/CallunaSansRegular-webfont.eot?#iefix") format("embedded-opentype"), url("type/CallunaSansRegular-webfont.woff") format("woff"), url("type/CallunaSansRegular-webfont.ttf") format("truetype"), url("type/CallunaSansRegular-webfont.svg#PlanerRegular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+.styled-form {
+  margin: 0 auto;
+  width: 200px; }
+  .styled-form .form-error {
+    display: block;
+    visibility: hidden;
+    overflow: hidden;
+    margin-left: 15px;
+    padding: 0;
+    background: #ffeeee;
+    color: #880000;
+    font-style: italic; }
+  .styled-form label {
+    color: #006cff;
+    display: block;
+    line-height: 20px; }
+  .styled-form input, .styled-form textarea {
+    font-size: 16px;
+    line-height: 20px;
+    color: #666666;
+    width: 180px;
+    padding: 3px 5px;
+    border: 1px solid #333333; }
+    .styled-form input:hover, .styled-form input:focus, .styled-form textarea:hover, .styled-form textarea:focus {
+      border-color: #006cff; }
+  .styled-form button {
+    width: 62px;
+    height: 28px;
+    margin-top: 5px;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-family: "Calluna", "Trebuchet MS", Verdana, sans-serif;
+    line-height: 26px;
+    text-align: center;
+    cursor: pointer;
+    background: #006cff url("images/sprite-map.png") 0 0px no-repeat;
+    border: 1px solid #004acc;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px; }
+    .styled-form button:hover {
+      background-position: 0 -30px; }
+    .styled-form button:active {
+      background-position: 0 -60px; }

@@ -28,9 +28,10 @@ Author URI: http://dev7studios.com
 }
 
 .theme-default .nivo-controlNav {
+    z-index:2000;
 	position:absolute;
-	right:5px;
-	top:10px;
+	left:50%;
+	bottom:10px;
     margin-left:-40px; /* Tweak this to center bullets */
 }
 .theme-default .nivo-controlNav a {
@@ -49,6 +50,7 @@ Author URI: http://dev7studios.com
 
 .theme-default .nivo-directionNav a {
 	display:block;
+    margin-top:120px;
 	width:30px;
 	height:30px;
 	background:url(images/arrows.png) no-repeat;
@@ -57,14 +59,14 @@ Author URI: http://dev7studios.com
 }
 .theme-default a.nivo-nextNav {
 	background-position:-30px 0;
-	right:15px;
+	right:300px;
 }
 .theme-default a.nivo-prevNav {
-	left:15px;
+	left:300px;
 }
 
 .theme-default .nivo-caption {
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: "Calluna", "Trebuchet MS", Tahoma, Verdana, sans-serif;
 }
 .theme-default .nivo-caption a {
     color:#fff;

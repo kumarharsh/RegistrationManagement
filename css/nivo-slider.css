@@ -12,7 +12,7 @@
 .nivoSlider {
     position:relative;
     width:848px; /* Change this to your images width */
-    height:289px; /* Change this to your images height */
+    height:290px; /* Change this to your images height */
     background:url(images/loading.gif) no-repeat 50% 50%;
 }
 .nivoSlider img {

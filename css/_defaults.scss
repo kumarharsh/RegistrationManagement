@@ -9,26 +9,30 @@
 
 // Defining constants
 // colours
-$pl-verde      : #95D905;
-$pl-oranje     : #f69100;
-
-$button-blue   : #888BED;
-$border-blue   : #6666FF;
-
-$text-normal   : #000000;
-$text-highlight: #6fc300;
-$text-lowlight : #666666;
-$text-links    : #6fc300;
-
-$bg-white      : #ffffff;
-$bg-light      : #f0ffd6;
-$input-forms   : #3f3f3f;
-$border-light  : #CCCCCC;
 
 $default-border-radius : 5px !default;
+$text-highlight : #006cff;
+$text-lowlight : #333333;
+$input-forms : #666666;
+$border-normal : #333333;
+$border-highlight : #006cff;
+$button-bg : #006cff;
+$button-border : #004acc;
+
 
 // typography
-$fonts         : "Trebuchet MS",Verdana,sans-serif;
+@font-face {
+    font-family: 'Calluna';
+    src: url('type/CallunaSansRegular-webfont.eot');
+    src: url('type/CallunaSansRegular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('type/CallunaSansRegular-webfont.woff') format('woff'),
+         url('type/CallunaSansRegular-webfont.ttf') format('truetype'),
+         url('type/CallunaSansRegular-webfont.svg#PlanerRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+$header-fonts : "Calluna", "Trebuchet MS", Verdana, sans-serif;
+$body-fonts : "Trebuchet MS",Verdana,sans-serif;
 
 @mixin link-style($color) {
     text-decoration: none;

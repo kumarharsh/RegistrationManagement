@@ -1,109 +1,101 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
 <?php
-
-session_start();
-
-if( (!isset( $_SESSION[ 'username' ] )) || ($_SESSION[ 'username' ] != "dean") )
-{
-	echo "You are not authorized...";
-	
-	exit;
-}
-
+    session_start();
+    if( (!isset( $_SESSION[ 'username' ] )) || ($_SESSION[ 'username' ] != "dean") )
+    {
+	    echo "You are not authorized...";
+        exit(0);
+    }
 ?>
-<?php 
-   //header('Location: dean_view_course.php');
-   //alert("add process is going on..!! first stop it..");
-  $con = mysql_connect("localhost","root","");
-if (!$con)
-  {
-  die('Could not connect: ' . mysql_error());
-  }
 
-mysql_select_db("dbms", $con);
+<?php
+    $con = mysql_connect("localhost","root","");
+    if (!$con)
+    {
+        die('Could not connect: ' . mysql_error());
+    }
+    mysql_select_db("dbms", $con);
 	
-$sql="select flag FROM session WHERE name='registration'" ;
-$result=mysql_query($sql);
-$row = mysql_fetch_array($result);
-$reg=$row['flag'];
+    $sql="select flag FROM session WHERE name='registration'" ;
+    $result=mysql_query($sql);
+    $row = mysql_fetch_array($result);
+    $reg=$row['flag'];
 
-$sql="select flag FROM session WHERE name='drop'" ;
-$result=mysql_query($sql);
-$row = mysql_fetch_array($result);
-$drop=$row['flag'];
-
-
-$sql="select flag FROM session WHERE name='add'" ;
-$result=mysql_query($sql);
-$row = mysql_fetch_array($result);
-$add=$row['flag'];
+    $sql="select flag FROM session WHERE name='drop'" ;
+    $result=mysql_query($sql);
+    $row = mysql_fetch_array($result);
+    $drop=$row['flag'];
 
 
-$sql="select flag FROM session WHERE name='overload'" ;
-$result=mysql_query($sql);
-$row = mysql_fetch_array($result);
-$overload=$row['flag'];
+    $sql="select flag FROM session WHERE name='add'" ;
+    $result=mysql_query($sql);
+    $row = mysql_fetch_array($result);
+    $add=$row['flag'];
 
-//echo $reg;
-//echo $drop;
-//echo $add;
-//echo $overload;
-$print="";
-if($reg==1)
-{
-	$print="REGISTRATION PROCESS IS GOING ON";
-}
-else if($drop==1)
-{
-	$print="DROP PROCESS IS GOING ON";
-}
-else if($add==1)
-{
-	$print="ADD PROCESS IS GOING ON";
-}
-else if($overload==1)
-{
-	$print="OVERLOAD PROCESS IS GOING ON";
-}
 
-	
-if($reg==0)
-{
-	$reg1="start registration session";
-}
-else
-{
-	$reg1="stop registration session";
-}
-if($drop==0)
-{
-	$drop1="start drop session";
-}
-else
-{
-	$drop1="stop drop session";
-}
+    $sql="select flag FROM session WHERE name='overload'" ;
+    $result=mysql_query($sql);
+    $row = mysql_fetch_array($result);
+    $overload=$row['flag'];
 
-if($add==0)
-{
-	$add1="start add session";
-}
-else
-{
-	$add1="stop add session";
-}
+    //echo $reg;
+    //echo $drop;
+    //echo $add;
+    //echo $overload;
+    $print="";
+    if($reg==1)
+    {
+        $print="REGISTRATION PROCESS IS GOING ON";
+    }
+    else if($drop==1)
+    {
+        $print="DROP PROCESS IS GOING ON";
+    }
+    else if($add==1)
+    {
+        $print="ADD PROCESS IS GOING ON";
+    }
+    else if($overload==1)
+    {
+        $print="OVERLOAD PROCESS IS GOING ON";
+    }
 
-if($overload==0)
-{
-	$overload1="start overload session";
-}
-else
-{
-	$overload1="stop overload session";
-}
+        
+    if($reg==0)
+    {
+        $reg1="start registration session";
+    }
+    else
+    {
+        $reg1="stop registration session";
+    }
+    if($drop==0)
+    {
+        $drop1="start drop session";
+    }
+    else
+    {
+        $drop1="stop drop session";
+    }
 
-mysql_close($con);
+    if($add==0)
+    {
+        $add1="start add session";
+    }
+    else
+    {
+        $add1="stop add session";
+    }
+
+    if($overload==0)
+    {
+        $overload1="start overload session";
+    }
+    else
+    {
+        $overload1="stop overload session";
+    }
+
+    mysql_close($con);
 
 
 ?>
@@ -240,9 +232,6 @@ function onoverload()
       <p>&nbsp;</p>
     </div>
 </div>
-    <div style="height:150px ; width:100% ; background:#000" >
-
-     </div>
 <div id="footer">
 	<p id="legal" align="center" > Copyright &copy; 2012 LNMIIT. All Rights Reserved.</p>
 </div>

@@ -56,12 +56,12 @@ body, button, input, select, textarea {
  * Also: hot pink! (or customize the background color to match your design)
  */
 ::-moz-selection {
-  background: #95D905;
+  background: #006cff;
   color: #fff;
   text-shadow: none; }
 
 ::selection {
-  background: #95D905;
+  background: #006cff;
   color: #fff;
   text-shadow: none; }
 

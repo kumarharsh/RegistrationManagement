@@ -1,0 +1,47 @@
+@import "defaults";
+.styled-form {
+    margin:0 auto;
+    width:200px;
+    .form-error {
+        display:block;
+        visibility:hidden;
+        overflow:hidden;
+        margin-left:15px;
+        padding:0;
+        background:#ffeeee;
+        color:#880000;
+        font-style:italic;
+    }
+    label {
+        color:$text-highlight;
+        display:block;
+        line-height:20px;
+    }
+    input, textarea {
+        font-size:16px;
+        line-height:20px;
+        color: $input-forms;
+        width:180px;
+        padding:3px 5px;
+        border: 1px solid $text-lowlight;
+        &:hover, &:focus { border-color:$border-highlight; }
+    }
+    button {
+        width:62px;
+        height:28px;
+        margin-top:5px;
+        color:#FFFFFF;
+        font-size: 16px;
+        font-family:$header-fonts;
+        line-height:26px;
+        text-align:center;
+        cursor:pointer;
+        background:$button-bg url('images/sprite-map.png') 0 0px no-repeat;
+        border: 1px solid $button-border;
+        border-radius: 2px;
+        -moz-border-radius: 2px;
+        -webkit-border-radius: 2px;
+        &:hover { background-position: 0 -30px; }
+        &:active { background-position: 0 -60px; }
+    }
+}

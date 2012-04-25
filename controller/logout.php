@@ -1,12 +1,11 @@
 <?php
-session_start();
-session_destroy();
+    session_start();
+    session_destroy();
 ?>
 <html>
-<body>User Logged Out</body>
+<body>User Logged Out. Redirecting to the home page</body>
 <?php
-sleep(1);
-header("Location:index.html");
+    header("Location:../index.php");
 ?>
 </html>
 

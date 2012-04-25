@@ -1,7 +1,37 @@
+/*
+ * Web Fonts from fontspring.com
+ *
+ * All OpenType features and all extended glyphs have been removed.
+ * Fully installable fonts can be purchased at http://www.fontspring.com
+ *
+ * The fonts included in this stylesheet are subject to the End User License you purchased
+ * from Fontspring. The fonts are protected under domestic and international trademark and 
+ * copyright law. You are prohibited from modifying, reverse engineering, duplicating, or
+ * distributing this font software.
+ *
+ * (c) 2010-2011 Fontspring
+ *
+ *
+ *
+ *
+ * The fonts included are copyrighted by the vendor listed below.
+ *
+ * Vendor:      The Northern Block
+ * License URL: http://www.fontspring.com/fflicense/northern-block
+ *
+ *
+ */
+
+@import "defaults";
+
+
 html, body {
     font-size:13px; 
     line-height:18px;
     color:#333333;
+    font-family: $body-fonts; 
+    font-weight: normal;
+    font-size: 12px;
 }
 a {
     color:#333333;
@@ -10,44 +40,99 @@ a {
     &:hover { color:#006cff; }
 }
     
-
+h1 {
+    color:#006cff;
+    font-size:22px;
+    line-height:28px;
+    text-shadow:1px 1px 1.5px rgba(0,0,0,0.3);
+    font-family: $header-fonts;
+    font-style:normal;
+    font-weight:normal;
+    margin:5px 0;
+}
 header {
+    position:relative;
     padding-top:5px;
     #logo img { height:40px; }
+    nav {
+      height:35px;
+      position: relative;
+      span {
+        margin:6px 3px 0 0;
+        display:inline-block;
+      }
+      ul {
+        z-index:200;
+        position: absolute;
+        right: 1px;
+        li {
+          height:35px;
+          display:inline-block;
+          padding-top: 5px;
+          margin-left:10px;
+          font-size:14px;
+          line-height:30px;
+        }
+      }
+    }
 }
 
 div#main {
     display:block;
     overflow:hidden;
     margin-top:10px;
-    section#slider {
-        margin:0 56px;
+    figure#presentationBox {
+        position:relative;
+        margin:20px 0;
+        background:#000000;
+        div#slider {
+            z-index:500;
+            height:290px;
+            margin:0 auto;
+        }
+        span#slider-overlay-right, #slider-overlay-left {
+            z-index:1000;
+            display:block;
+            position:absolute;
+            width:100px;
+            height:290px;
+            top:0;
+        }
+        span#slider-overlay-left { left:56px; background:url("images/slider-overlay-left.png") top left repeat-y;
+        }
+        span#slider-overlay-right { right:56px; background:url("images/slider-overlay-right.png") top right repeat-y;
+        }            
+    }
+    section#content {
+        width:740px;
+        p { 
+            text-align:justify;
+        }
+    }
+    aside#main-sidebar {
+        float:right;
+        width:200px;
+        padding:0;
     }
 }
 
 footer {
-    text-align:center; 
-    a {
-        &, &:visited, &:active { color:#006cff; }
+  clear:both;
+  color:$text-lowlight;
+  nav {
+    text-align:center; margin:30px auto 0 auto;
+    ul li{
+      display:inline;
+      padding-left:20px;
+      a {
+        color:#006cff;
         text-decoration:none;
-        &:hover { text-decoration:underline; color:#ff0000; }
+        &:visited,&:active { color:#006cff; }
+        &:hover { color:#0000ff; }
+      }
+      &:first-child {
+          padding-left:0px;
+      }
     }
-    nav#footnav {
-        height:30px;
-        margin:0 auto;
-        ul {
-            position:relative;
-            height:30px;
-            margin:0 auto;
-            li {
-                display:inline-block;
-                padding-left:10px;
-                &:first-child {
-                    padding-left:0px;
-                }
-            }
-        }
-    }
+  }
 }
-        
-
