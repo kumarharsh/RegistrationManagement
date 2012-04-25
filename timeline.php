@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0049)http://www.premiumfreebies.eu/previews/MiniFolio/ -->
 <html xmlns="http://www.w3.org/1999/xhtml" class="cufon-active cufon-ready cufon-active cufon-ready"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-
+<!-- test -->
 <meta name="author" content="iStoredesigns">
 <meta name="description" content="Get in the spotlight">
 <meta name="keywords" content="premium css templates, premium wordpress themes, istoredesigns, vector icons, corporate identity">
@@ -189,7 +189,7 @@ $(this).next("li.menu_body").slideDown(500).siblings("li.menu_body").slideUp("sl
 
         <div class="bottom_divider"></div>
 	
-<div style="width:900px; float:left; margin:10px 0px 0 15px; text-align: center;">Copyright © 2012 Course Registration - All Rights Reserved by The <a href="http://www.lnmiit.ac.in">LNMIIT</a></div>
+<div style="width:900px; float:left; margin:10px 0px 0 15px; text-align: center;">Copyright ï¿½ 2012 Course Registration - All Rights Reserved by The <a href="http://www.lnmiit.ac.in">LNMIIT</a></div>
 
 
 <!-- Slider START  -->
