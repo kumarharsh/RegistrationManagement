@@ -1,4 +1,5 @@
 *.swp
+.sass-cache
 
 # OS generated files #
 ######################

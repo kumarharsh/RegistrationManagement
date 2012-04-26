@@ -17,13 +17,12 @@
   margin: 0 auto;
   width: 200px; }
   .styled-form .form-error {
-    display: block;
-    visibility: hidden;
-    overflow: hidden;
-    margin-left: 15px;
-    padding: 0;
+    display: none;
+    padding: 2px;
+    margin: 5px 0;
     background: #ffeeee;
-    color: #880000;
+    border: 1px solid #ff0000;
+    color: #ff0000;
     font-style: italic; }
   .styled-form label {
     color: #006cff;
@@ -33,7 +32,7 @@
     font-size: 16px;
     line-height: 20px;
     color: #666666;
-    width: 180px;
+    width: 188px;
     padding: 3px 5px;
     border: 1px solid #333333; }
     .styled-form input:hover, .styled-form input:focus, .styled-form textarea:hover, .styled-form textarea:focus {

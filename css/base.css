@@ -121,19 +121,22 @@ div#main {
 
 footer {
   clear: both;
-  color: #333333; }
+  color: #333333;
+  background: url("images/footer-glow.png") top center no-repeat transparent;
+  padding: 15px 0 0 0; }
   footer nav {
-    text-align: center;
-    margin: 30px auto 0 auto; }
-    footer nav ul li {
-      display: inline;
-      padding-left: 20px; }
-      footer nav ul li a {
-        color: #006cff;
-        text-decoration: none; }
-        footer nav ul li a:visited, footer nav ul li a:active {
-          color: #006cff; }
-        footer nav ul li a:hover {
-          color: #0000ff; }
-      footer nav ul li:first-child {
-        padding-left: 0px; }
+    text-align: center; }
+    footer nav ul {
+      padding: 0; }
+      footer nav ul li {
+        display: inline;
+        padding-left: 20px; }
+        footer nav ul li a {
+          color: #006cff;
+          text-decoration: none; }
+          footer nav ul li a:visited, footer nav ul li a:active {
+            color: #006cff; }
+          footer nav ul li a:hover {
+            color: #0000ff; }
+        footer nav ul li:first-child {
+          padding-left: 0px; }

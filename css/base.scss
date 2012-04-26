@@ -119,19 +119,24 @@ div#main {
 footer {
   clear:both;
   color:$text-lowlight;
+  background:url('images/footer-glow.png') top center no-repeat transparent;
+  padding:15px 0 0 0;
   nav {
-    text-align:center; margin:30px auto 0 auto;
-    ul li{
-      display:inline;
-      padding-left:20px;
-      a {
-        color:#006cff;
-        text-decoration:none;
-        &:visited,&:active { color:#006cff; }
-        &:hover { color:#0000ff; }
-      }
-      &:first-child {
-          padding-left:0px;
+    text-align:center; 
+    ul {
+      padding:0;
+      li{
+        display:inline;
+        padding-left:20px;
+        a {
+          color:#006cff;
+          text-decoration:none;
+          &:visited,&:active { color:#006cff; }
+          &:hover { color:#0000ff; }
+        }
+        &:first-child {
+            padding-left:0px;
+        }
       }
     }
   }

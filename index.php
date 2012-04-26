@@ -62,13 +62,13 @@
 
       <aside id="main-sidebar">
         <h1>Login</h1>
-        <form id="login-form" method="post" action="controller/login.php" class="styled-form">
+        <form id="login-form" method="post" action="controller/logoin.php" class="styled-form">
               <p class="form-error"></p>
               <label for="username">User ID</label>
               <input id="username" type="text" name="username" value="" />
               <label for="password">Password</label>
               <input id="password" type="password" name="password" value="" />
-              <button id="login-submit" type="submit" name="submit">Login</button>
+              <button type="submit" name="loginSubmit">Login</button>
             <p><a href="#">Forgot your password?</a></p>
         </form>
       </aside>
@@ -79,8 +79,6 @@
         <h1>Vision</h1>
         <p>To establish a World class platform for creation, dissemination, and application of knowledge in the field of Information Technology through research, pedagogy, and consultation, as well as to become an effective catalyst for technological and societal development of the country through interactions with industries and academia.</p>
       </section>
-
-
 
 
       <footer>
@@ -103,6 +101,29 @@
   <script type="text/javascript">
     $(window).load(function() {
         $('#slider').nivoSlider();
+        $('#login-form').submit(function(e) {
+            e.preventDefault();
+            var postUrl = "controller/login.php";// $(this).attr("action");
+            var request = $.ajax({
+                type: "POST",
+                url: postUrl,
+                data: $(this).serialize(),
+            })
+            /*var request = $.ajax({
+                type: "POST",
+                url: postUrl,
+                data: $(this).serialize(),
+                dataType: "json"
+            });*/
+            request.done(function(response) {
+                if(response.status==="success") {
+                    window.location.href = response.access;
+                }
+                else {
+                    $('.form-error').show().html(response.message);
+                }            
+            });
+        });
     });
   </script>
   <!-- end scripts-->

@@ -2,19 +2,22 @@
     $con = mysql_connect("localhost","root","");
     if (!$con)
     {
-        die('Could not connect: ' . mysql_error());
+        die('Could not connect:\n'.mysql_error());
     }
 
     mysql_select_db("dbms", $con);
     $sql="SELECT * FROM dean WHERE username='".$_POST['username']."' AND password='".$_POST['password']."'";
     $result=mysql_query($sql,$con);
     $row = mysql_fetch_array($result);
+    $loginType = "none";
     if ($row)
     {
-        /* if a record is found, login as DEAN and redirect */
         session_start();
         $_SESSION[ 'username' ] = $_POST['username'];
-        header("Location:../dean_home.php");
+        /* if a record is found, login as DEAN and redirect */
+        $response = array("status" => "success", "access" => "deanCP.php");
+        header('Content-type: application/json');
+        echo json_encode($response);
         exit();
     }
 
@@ -26,7 +29,9 @@
     {
         session_start();
         $_SESSION[ 'username' ] = $_POST['username'];
-        header("Location:../faculty_home.php");
+        $response = array("status" => "success", "access" => "facultyCP.php");
+        header('Content-type: application/json');
+        echo json_encode($response);
         exit();
     }
  
@@ -38,15 +43,18 @@
     {
         session_start();
         $_SESSION[ 'username' ] = $_POST['username'];
-        header("Location:student_login_check.php");
+        $response = array("status" => "success", "access" => "studentCP.php");
+        header('Content-type: application/json');
+        echo json_encode($response);
         exit();
     }
+    mysql_close($con);
     
-    /* else redirect to the home page, and display an error */
-    else
-    {
-        header("Location:index.php");
-        exit();
-    }
-    mysql_close($con)
+
+    // Return Error if none of the above logins succeed.
+    $response["status"] = "error";
+    $response["message"] = "The username and password do not match";
+    header('Content-type: application/json');
+    echo json_encode($response);
+
 ?>

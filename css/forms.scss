@@ -3,13 +3,12 @@
     margin:0 auto;
     width:200px;
     .form-error {
-        display:block;
-        visibility:hidden;
-        overflow:hidden;
-        margin-left:15px;
-        padding:0;
+        display:none;
+        padding:2px;
+        margin: 5px 0;
         background:#ffeeee;
-        color:#880000;
+        border:1px solid #ff0000;
+        color:#ff0000;
         font-style:italic;
     }
     label {
@@ -21,7 +20,7 @@
         font-size:16px;
         line-height:20px;
         color: $input-forms;
-        width:180px;
+        width:188px;
         padding:3px 5px;
         border: 1px solid $text-lowlight;
         &:hover, &:focus { border-color:$border-highlight; }
