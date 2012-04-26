@@ -46,3 +46,4 @@ mysql_select_db("dbms", $con);
   mysql_close($con)
   
   ?>
+  <a href="logout.php">logout</a>
