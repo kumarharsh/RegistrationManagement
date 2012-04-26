@@ -1,13 +1,10 @@
 <?php
-
-session_start();
-
-if( (!isset( $_SESSION[ 'username' ] )) || ($_SESSION[ 'username' ] == "dean") )
-{
-	echo "You are not authorized...";
-	exit;
-}
-
+    session_start();
+    if( (!isset( $_SESSION[ 'username' ] )) || ($_SESSION[ 'username' ] == "dean") )
+    {
+        echo "You are not authorized...";
+        exit;
+    }
 ?>
 <?php
     $con = mysql_connect("localhost","root","");
@@ -26,10 +23,10 @@ if( (!isset( $_SESSION[ 'username' ] )) || ($_SESSION[ 'username' ] == "dean") )
         if something goes wrong, it will be because the $row[name] is not set.
         if this happens, then uncomment the following lines: 
 
-        if(!$row)
-        {
-            echo "<p>Currently no process is going on.</p>";
-        }
+    if(!$row)
+    {
+        echo "<p>Currently no process is going on.</p>";
+    }
     */
     switch($row[name])
     {
@@ -46,4 +43,5 @@ if( (!isset( $_SESSION[ 'username' ] )) || ($_SESSION[ 'username' ] == "dean") )
                     echo "</p>";
     }
     mysql_close($con)
+    <a href="logout.php">logout</a>
 ?>
