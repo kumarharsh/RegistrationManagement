@@ -1,29 +1,4 @@
-/*
- * Web Fonts from fontspring.com
- *
- * All OpenType features and all extended glyphs have been removed.
- * Fully installable fonts can be purchased at http://www.fontspring.com
- *
- * The fonts included in this stylesheet are subject to the End User License you purchased
- * from Fontspring. The fonts are protected under domestic and international trademark and 
- * copyright law. You are prohibited from modifying, reverse engineering, duplicating, or
- * distributing this font software.
- *
- * (c) 2010-2011 Fontspring
- *
- *
- *
- *
- * The fonts included are copyrighted by the vendor listed below.
- *
- * Vendor:      The Northern Block
- * License URL: http://www.fontspring.com/fflicense/northern-block
- *
- *
- */
-
 @import "defaults";
-
 
 html, body {
     font-size:13px; 
@@ -54,27 +29,6 @@ header {
     position:relative;
     padding-top:5px;
     #logo img { height:40px; }
-    nav {
-      height:35px;
-      position: relative;
-      span {
-        margin:6px 3px 0 0;
-        display:inline-block;
-      }
-      ul {
-        z-index:200;
-        position: absolute;
-        right: 1px;
-        li {
-          height:35px;
-          display:inline-block;
-          padding-top: 5px;
-          margin-left:10px;
-          font-size:14px;
-          line-height:30px;
-        }
-      }
-    }
 }
 
 div#main {
@@ -113,13 +67,14 @@ div#main {
         float:right;
         width:200px;
         padding:0;
+        span#todayDate { color:#559cff; }
     }
 }
 
 footer {
   clear:both;
   color:$text-lowlight;
-  background:url('images/footer-glow.png') top center no-repeat transparent;
+  background:url('images/footer.jpg') top center no-repeat transparent;
   padding:15px 0 0 0;
   nav {
     text-align:center; 

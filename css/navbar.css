@@ -1,0 +1,118 @@
+nav#nav-container-outer{
+    padding: 0px;
+    height: 45px;
+    line-height:25px;
+    font-size:12px;
+    position:relative;
+    background:url('images/header.jpg') top center no-repeat;
+}
+.float-left{
+    float: left;
+}
+.float-right{
+    float: right;
+}
+.nav-container .divider{
+    display:block;
+    font-size:1px;
+    border-width:0px;
+    border-style:solid;
+}
+.nav-container .divider-vert{
+    float:left;
+    width:0px;
+    display: none;
+}
+.nav-container .item-secondary-title{
+    display:block;
+    cursor:default;
+    white-space:nowrap;
+}
+.clear{
+    font-size:1px;
+    height:0px;
+    width:0px;
+    clear:left;
+    line-height:0px;
+    display:block;
+    float:none;
+}
+.nav-container{position:absolute;right:0;zoom:1;margin: 0 auto;}
+.nav-container a, .nav-container li{float:left;display:block;white-space:nowrap;}
+.nav-container div a, .nav-container ul a, .nav-container ul li{float:none;}
+.nav-container ul{left:-10000px;position:absolute;}
+.nav-container, .nav-container ul{list-style:none;padding:0px;margin:0px;}
+.nav-container li a { float:none }
+.nav-container li{ position:relative; }
+.nav-container ul{ z-index:10; }
+.nav-container ul ul{ z-index:20; }
+.nav-container ul ul ul{z-index:30;}
+.nav-container ul ul ul ul{z-index:40;}
+.nav-container ul ul ul ul ul{z-index:50;}
+li:hover>ul {left:auto;}
+#nav-container ul {top:100%;}
+#nav-container ul li:hover>ul {top:0px;left:100%;}
+
+/*^'^ Primary Items ^'^*/	
+#nav-container a{	
+    padding: 5px 15px;
+    margin: 0;
+    color: #006cff;
+    text-decoration:none;
+}
+
+#nav-container li:hover {
+    color: #ffffff;
+    background:#006cff;
+}
+#nav-container li:hover a {
+    color: #ffffff;
+}
+
+/*^'^ Secondary Items Container ^'^*/	
+#nav-container div, #nav-container ul{	
+    padding:5px;
+    margin:0;
+    background:#006cff;
+    border: 1px solid #006cff;
+}
+
+/*^'^ Secondary Items ^'^*/	
+#nav-container div a, #nav-container ul a{	
+    padding:3px;
+    background: #006cff;
+    color:#ffffff;
+    font-size:11px;
+    border:none;
+    margin: 0;
+}
+
+/*^'^ Secondary Items Hover State ^'^*/	
+#nav-container div a:hover, #nav-container ul a:hover {
+    background: #ffffff;
+    color:#006cff;
+}
+
+/*^'^ Secondary Item Titles ^'^*/	
+#nav-container .item-secondary-title{	
+    cursor:default;
+    padding:4px 0;
+    color: #6C3600;
+    background-repeat: no-repeat;
+    font-weight:bold;
+}
+
+/*^'^ Horizontal Dividers ^'^*/	
+#nav-container .divider-horiz{	
+    border-top-width:1px;
+    margin:5px 5px;
+    border-color: #C16100;
+}
+
+/*^'^ Vertical Dividers ^'^*/	
+#nav-container .divider-vert{	
+    border-left-width:1px;
+    height:15px;
+    margin:4px 2px 0px 2px;
+    border-color:#AAAAAA;
+}

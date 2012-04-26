@@ -15,6 +15,70 @@
     }
 ?>
 
+
+<?php
+    $con = mysql_connect("localhost","root","");
+    if (!$con)
+    {
+        die('Could not connect: ' . mysql_error());
+    }
+    mysql_select_db("dbms", $con);
+	
+    $sql="select flag FROM session WHERE name='registration'" ;
+    $result=mysql_query($sql);
+    $row = mysql_fetch_array($result);
+    $reg=$row['flag'];
+
+    $sql="select flag FROM session WHERE name='drop'" ;
+    $result=mysql_query($sql);
+    $row = mysql_fetch_array($result);
+    $drop=$row['flag'];
+
+    $sql="select flag FROM session WHERE name='add'" ;
+    $result=mysql_query($sql);
+    $row = mysql_fetch_array($result);
+    $add=$row['flag'];
+
+    $sql="select flag FROM session WHERE name='overload'" ;
+    $result=mysql_query($sql);
+    $row = mysql_fetch_array($result);
+    $overload=$row['flag'];
+
+    if($reg==1) {
+        $status="Registration";
+    } else if($drop==1) {
+        $status="Drop";
+    } else if($add==1) {
+        $status="Add";
+    } else if($overload==1) {
+        $status="Overload";
+    }
+        
+    if($reg==0) {
+        $reg1="Start Registration Stage";
+    } else {
+        $reg1="End Registration Stage";
+    }
+    if($drop==0) {
+        $drop1="Start Drop Stage";
+    } else {
+        $drop1="End Drop Stage";
+    }
+    if($add==0) {
+        $add1="Start Add Stage";
+    } else {
+        $add1="End Add Stage";
+    }
+    if($overload==0) {
+        $overload1="Start Overload Stage";
+    } else {
+        $overload1="Stop Overload Stage";
+    }
+    mysql_close($con);
+?>
+
+
+
 <html id="courseReg" class="no-js" lang="en"> <!--<![endif]-->
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -35,7 +99,7 @@
  
   <!-- include the stylesheets to be used on the page --> 
   <?php include("css/main.css"); ?>
-  <link rel="stylesheet" href="css/table.css"/>
+  <link rel="stylesheet" href="css/navbar.css"/>
   <link rel="stylesheet" href="css/nivo-slider.css"/>
   <link rel="stylesheet" href="css/nivo-default-theme.css"/>
   <!-- end CSS-->
@@ -59,8 +123,8 @@
     <div id="main" class="container_24" role="main">
 
       <aside id="main-sidebar">
-        <h1>Welcome Anupam</h1>
-        <h3>Today <span id="todayDate"></h3>
+        <h1>Welcome, Mr. Singh</h1>
+        <h3>Today is <span id="todayDate"></h3>
       </aside>
 
       <section id="content">
