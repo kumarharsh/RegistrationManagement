@@ -102,6 +102,7 @@
   <link rel="stylesheet" href="css/navbar.css"/>
   <link rel="stylesheet" href="css/nivo-slider.css"/>
   <link rel="stylesheet" href="css/nivo-default-theme.css"/>
+  <link rel="stylesheet" href="css/jquery.checkbox.css"/>
   <!-- end CSS-->
 
 
@@ -125,6 +126,16 @@
       <aside id="main-sidebar">
         <h1>Welcome, Mr. Singh</h1>
         <h3>Today is <span id="todayDate"></h3>
+        
+        <section id="control-panel">
+        <h2>Control Panel</h2>
+            <form id="stage-activator">
+                <p><label><input name="status.1" value="1" type="radio" checked="checked">Registration</label></p>
+                <p><label><input name="status.1" value="2" type="radio">Drop</label></p>
+                <p><label><input name="status.1" value="3" type="radio">Add</label></p>
+                <p><label><input name="status.1" value="4" type="radio">Overload</label></p>
+            </form>
+        </section>
       </aside>
 
       <section id="content">
@@ -152,10 +163,12 @@
   <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
   <script type="text/javascript" src="js/jquery-ui-1.8.18.min.js"></script>
   <script type="text/javascript" src="js/jquery.nivo.slider.pack.js"></script>
+  <script type="text/javascript" src="js/jquery.checkbox.min.js"></script>
   <script type="text/javascript">
     $(window).load(function() {
         $('#slider').nivoSlider();
         $('#todayDate').text(getToday());
+        $('input:radio').checkbox();
     });
   </script>
   <script language="JavaScript">

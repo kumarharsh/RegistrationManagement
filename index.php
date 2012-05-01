@@ -11,7 +11,7 @@
     if( (isset( $_SESSION[ 'username' ] )) AND ($_SESSION[ 'username' ] == "dean") )
     {
 	    //echo "Sorry. You do not have enough authorization to access this level. Redirecting you to back to the home page.";
-        header("Location: dean.php");
+        header("Location: deanCP.php");
     }
 	if( (isset( $_SESSION[ 'username' ] )) AND ($_SESSION[ 'username' ] != "dean") )
     {
@@ -78,7 +78,7 @@
 
       <aside id="main-sidebar">
         <h1>Login</h1>
-        <form id="login-form" method="post" action="controller/logoin.php" class="styled-form">
+        <form id="login-form" method="post" action="controller/login.php" class="styled-form">
               <p class="form-error"></p>
               <label for="username">User ID</label>
               <input id="username" type="text" name="username" value="" />
@@ -119,18 +119,12 @@
         $('#slider').nivoSlider();
         $('#login-form').submit(function(e) {
             e.preventDefault();
-            var postUrl = "controller/login.php";// $(this).attr("action");
+            var postUrl = $(this).attr("action");
             var request = $.ajax({
                 type: "POST",
                 url: postUrl,
                 data: $(this).serialize(),
             })
-            /*var request = $.ajax({
-                type: "POST",
-                url: postUrl,
-                data: $(this).serialize(),
-                dataType: "json"
-            });*/
             request.done(function(response) {
                 if(response.status==="success") {
                     window.location.href = response.access;

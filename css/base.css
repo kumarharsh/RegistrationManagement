@@ -29,8 +29,8 @@ a {
   a:hover {
     color: #006cff; }
 
-h1 {
-  color: #006cff;
+h1, h2, h3 {
+  color: #008cdd;
   font-size: 22px;
   line-height: 28px;
   text-shadow: 1px 1px 1.5px rgba(0, 0, 0, 0.3);
@@ -38,6 +38,15 @@ h1 {
   font-style: normal;
   font-weight: normal;
   margin: 5px 0; }
+
+h2 {
+  font-size: 18px;
+  line-height: 24px; }
+
+h3 {
+  font-size: 16px;
+  line-height: 18px;
+  color: #006cff; }
 
 header {
   position: relative;
@@ -80,6 +89,8 @@ div#main {
     padding: 0; }
     div#main aside#main-sidebar span#todayDate {
       color: #559cff; }
+    div#main aside#main-sidebar section#control-panel {
+      margin-top: 30px; }
 
 footer {
   clear: both;
