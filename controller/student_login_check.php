@@ -28,7 +28,7 @@
         echo "<p>Currently no process is going on.</p>";
     }
     */
-    switch($row[name])
+    switch($row['name'])
     {
         case "registration" : header("Location: ../student_registration.php");
             break;
@@ -42,6 +42,6 @@
                     echo "Currently no process is going on .....";
                     echo "</p>";
     }
-    mysql_close($con)
-    <a href="logout.php">logout</a>
+    mysql_close($con);
+    echo '<a href="logout.php">logout</a>';
 ?>
