@@ -1,9 +1,27 @@
-<h1>Course Info</h1>
-<form id="course-info-form" action="controller/showCourseInfo.php" method="post" class="styled-form">
-    <p>Enter the course ID of the desired course:</p>
+<h1>Add Course</h1>
+<form id="course-add-form" action="controller/addCourse.php" method="post" class="styled-form">
+    <p>Fill in the form to add a new course</p>
     <p class="form-error"></p>
     <label for="cid">Course ID</label>
     <input id="cid" type="text" name="cid" value="" />
+    <label for="cname">Course Name</label>
+    <input id="cname" type="text" name="cname" value="" />
+    <label for="credits">Credits</label>
+    <input id="credits" type="text" name="credits" value="" />
+    <label for="type">Type of Course</label>
+    <input id="type" type="text" name="type" value="" />
+    <label for="faculty">Instructor Name</label>
+    <input id="faculty" type="text" name="faculty" value="" />
+    <label for="max">Max Seats</label>
+    <input id="max" type="text" name="max" value="" />
+
+    <label>Program</label>
+    <label>Undergraduate<input type="checkbox" name="program" value="ug"/></label>
+    <label>Postgraduate<input type="checkbox" name="program" value="pg"/></label>
+
+
+    
+    
     <button type="submit" name="course-info-submit">View</button>
 </form>
 <h2 id="course-name"></h2>

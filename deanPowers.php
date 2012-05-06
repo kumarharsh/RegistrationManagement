@@ -66,18 +66,29 @@
 
     <div id="main" class="container_24" role="main">
 
+      <section id="content" class="stretch">
       <?php
         if(!isset($_REQUEST['view']) || $_REQUEST['view']=="home")
           header('deanCP.php');
         else if($_REQUEST['view']=="courses")
           include('widgets/dean/viewCourses.php');
-        else if($_REQUEST['view']=="courses") {
+        else if($_REQUEST['view']=="info") {
             if($_REQUEST['sort']=="student")
               include('widgets/dean/infoStudent.php');
-            if($_REQUEST['sort']=="course")
+            else if($_REQUEST['sort']=="course")
               include('widgets/dean/infoCourse.php');
         }
+        else if($_REQUEST['view']=="alter") {
+            if($_REQUEST['mode']=="add")
+              include('widgets/dean/addCourseForm.php');
+            else if($_REQUEST['mode']=="mod")
+              include('widgets/dean/modCourseForm.php');
+            else if($_REQUEST['mode']=="del")
+              include('widgets/dean/delCourseForm.php');
+        }
+        
       ?>
+      </section>
       <footer>
          <?php include("widgets/footer.php"); ?> 
       </footer>

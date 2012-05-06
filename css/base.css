@@ -80,7 +80,10 @@ div#main {
       right: 56px;
       background: url("images/slider-overlay-right.png") top right repeat-y; }
   div#main section#content {
-    width: 740px; }
+    width: 740px;
+    margin-bottom: 20px; }
+    div#main section#content.stretch {
+      width: 100%; }
     div#main section#content p {
       text-align: justify; }
   div#main aside#main-sidebar {

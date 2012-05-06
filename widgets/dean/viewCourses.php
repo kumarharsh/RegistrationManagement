@@ -1,10 +1,6 @@
 <h1>Offered Courses</h1>
 <?php
-    $con = mysql_connect("localhost","root","");
-    if (!$con)
-    {
-        die('Could not connect: ' . mysql_error());
-    }
+    $con = mysql_connect("localhost","root","") or die('Could not connect: ' . mysql_error());
 
     mysql_select_db("dbms", $con);
     $sql="SELECT * FROM course";

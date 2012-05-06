@@ -68,9 +68,9 @@ div#main {
     }
     section#content {
         width:740px;
-        p { 
-            text-align:justify;
-        }
+        &.stretch { width:100%; }
+        p { text-align:justify; }
+        margin-bottom:20px;
     }
     aside#main-sidebar {
         float:right;
