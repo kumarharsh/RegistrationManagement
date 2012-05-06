@@ -23,10 +23,14 @@
         $currentStage = 0;
     
     $diffStage = $newStage-$currentStage;
-    if($diffStage < 0) {
-        $response = array("status" => "error", "message" => "This stage has already passed.");
-    }
-    else if($diffStage == 0) {
+/*  Commenting this one out so that all the stages can be set
+    easily. In the professional version (if ever implemented),
+    uncomment this */
+/*    if($diffStage < 0) {
+ *       $response = array("status" => "error", "message" => "This stage has already passed.");
+ *   }
+ */
+    if($diffStage == 0) {
         $response = array("status" => "error", "message" => "This stage is already active.");
     }
     else if($diffStage == 1) {
