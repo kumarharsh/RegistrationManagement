@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if( (!isset( $_SESSION[ 'username' , 'type' ] )) || ($_SESSION[ 'tyoe' ] != "dean") )
+    if( (!isset($_SESSION['username'])) || ($_SESSION[ 'type' ] != "dean") )
     {
         echo "You are not authorized...";
         exit;

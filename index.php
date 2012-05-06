@@ -8,12 +8,17 @@
 
 <?php
     session_start();
-    if( (isset( $_SESSION[ 'username' ] )) AND ($_SESSION[ 'username' ] == "dean") )
+    if( isset($_SESSION['username']) AND isset($_SESSION['type']) AND $_SESSION[ 'type' ] === "dean" )
     {
 	    //echo "Sorry. You do not have enough authorization to access this level. Redirecting you to back to the home page.";
         header("Location: deanCP.php");
     }
-	else if( (isset( $_SESSION[ 'username' ] )) AND ($_SESSION[ 'username' ] != "dean") )
+    else if( isset($_SESSION['username']) AND isset($_SESSION['type']) AND $_SESSION[ 'type' ] === "faculty" )
+    {
+	    //echo "Sorry. You do not have enough authorization to access this level. Redirecting you to back to the home page.";
+        header("Location: facultyCP.php");
+    }
+    else if( isset($_SESSION['username']) AND isset($_SESSION['type']) AND $_SESSION[ 'type' ] === "student" )
     {
 	    //echo "Sorry. You do not have enough authorization to access this level. Redirecting you to back to the home page.";
         header("Location: ./controller/student_login_check.php");

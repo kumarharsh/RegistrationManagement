@@ -8,7 +8,7 @@
 
 <?php
     session_start();
-    if( (!isset( $_SESSION[ 'username' , 'type' ] )) || ($_SESSION[ 'type' ] != "student") )
+    if( (!isset( $_SESSION[ 'username' ] )) || ($_SESSION[ 'type' ] != "student") )
     {
 	    echo "Sorry. You do not have enough authorization to access this level. Redirecting you to back to the home page.";
         header("Location: index.php");
@@ -53,7 +53,7 @@
     <header>
       <div class="container_24"> 
         <?php include('widgets/header.php'); ?>
-        <?php include('widgets/topnav-dean.php'); ?>
+        <?php include('widgets/topnav-student.php'); ?>
       </div>
     </header>
 
