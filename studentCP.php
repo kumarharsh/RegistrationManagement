@@ -86,7 +86,10 @@
             $conf = fopen('controller/processStage.conf','r');
             fseek($conf, -1, SEEK_END);
             $cs = fgetc($conf);
-            echo $stageNames[$cs];
+            if($cs)
+				echo $stageNames[$cs];
+			else
+				echo "Currently no process is going on..";
             fclose($conf);
           ?>
           </h3>
