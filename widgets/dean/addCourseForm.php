@@ -12,33 +12,18 @@
     <input id="type" type="text" name="type" value="" />
     <label for="faculty">Instructor Name</label>
     <input id="faculty" type="text" name="faculty" value="" />
-    <label for="max">Max Seats</label>
-    <input id="max" type="text" name="max" value="" />
+    <label for="max_seat">Max Seats</label>
+    <input id="max_seat" type="text" name="max_seat" value="" />
 
     <label>Program</label>
-    <label>Undergraduate<input type="checkbox" name="program" value="ug"/></label>
-    <label>Postgraduate<input type="checkbox" name="program" value="pg"/></label>
-
-
-    
-    
-    <button type="submit" name="course-info-submit">View</button>
+    <label><input type="checkbox" name="program[]" value="UG"/>Undergraduate</label>
+    <label><input type="checkbox" name="program[]" value="PG"/>Postgraduate</label>
+    <button type="submit" name="course-add-submit">Add</button>
 </form>
-<h2 id="course-name"></h2>
-<table id="course-info">
-    <thead>
-        <tr>
-            <th>Student ID</th>
-            <th>Student Name</th>
-        </th>
-    <thead>
-</table>
 
   <script type='text/javascript'>
     $(document).ready(function() {
-        $('#course-info').hide();
-        $('#course-name').hide();
-        $('#course-info-form').submit(function(e) {
+        $('#course-add-form').submit(function(e) {
             e.preventDefault();
             var postUrl = $(this).attr("action");
             var request = $.ajax({
@@ -47,12 +32,12 @@
                 data: $(this).serialize()
             })
             request.done(function(response) {
+                console.log(response);
                 if(response.status=='error') {
-                    alert(response.message);
+                  $(".form-error").show().html(response.message);
                 }
                 else {
-                  $('#course-info').dataTable( response.data ).show();
-                  $('#course-name').html(response.name).show();
+                  alert(response.message);
                 }
             });
         });
