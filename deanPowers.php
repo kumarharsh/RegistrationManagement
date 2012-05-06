@@ -87,10 +87,12 @@
         </section>
       </aside>
 
-      <section id="content">
-          <h1>Welcome To Administration Module</h1>
-          <p>You can activate the different stages of the registration process, and also view and approve requests from students</p>
-      </section>
+      <?php
+        if(!isset($_REQUEST['view']) || $_REQUEST['view']=="home")
+          header('deanCP.php');
+        else if($_REQUEST['view']=="courses")
+          include('widgets/dean/viewCourses.php');
+      ?>
       <footer>
          <?php include("widgets/footer.php"); ?> 
       </footer>
