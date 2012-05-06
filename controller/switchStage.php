@@ -33,7 +33,7 @@
     if($diffStage == 0) {
         $response = array("status" => "error", "message" => "This stage is already active.");
     }
-    else if($diffStage == 1) {
+    else if($diffStage == 1 || $newStage > 0 && newStage < 5) {
         $result = fwrite($conf,$newStage);
         if($result)
             $response = array("status" => "success", "stage" => $stageNames[$newStage] );
