@@ -60,11 +60,25 @@
     <div id="main" class="container_24" role="main">
 
       <aside id="main-sidebar">
-        <h1>Welcome, Mr. Singh</h1>
+        <h1>Welcome, Mr. <?php  $id=$_SESSION[ 'username' ];
+							    $con = mysql_connect("localhost","root","");
+								if (!$con)
+								{
+								  die('Could not connect: ' . mysql_error());
+								}
+								
+								mysql_select_db("dbms", $con);
+									
+								$sql="select * from student where username='$id'" ;
+								$result=mysql_query($sql);
+								$row = mysql_fetch_array($result); 
+								echo $row['fname'];
+								mysql_close($con);
+						 ?></h1>
         <h3>Today is <span id="todayDate"></h3>
         
         <section id="control-panel">
-        <h2>Current Stage</h2>
+        <h2>Current Stage going on:</h2>
         
           <h3 id="current-stage">
           <?php
@@ -76,14 +90,6 @@
             fclose($conf);
           ?>
           </h3>
-
-            <form id="form-stage" class="switches" method="post" action="controller/switchStage.php">
-                <p><label><input name="stage" value="1" type="radio">Registration</label></p>
-                <p><label><input name="stage" value="2" type="radio">Drop</label></p>
-                <p><label><input name="stage" value="3" type="radio">Add</label></p>
-                <p><label><input name="stage" value="4" type="radio">Overload</label></p>
-                <button type="submit" name="switch-stage">Set</button>
-            </form>
         </section>
       </aside>
 
