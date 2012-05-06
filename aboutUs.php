@@ -5,22 +5,6 @@
 <!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
 <!-- Consider adding an manifest.appcache: h5bp.com/d/Offline -->
 <!--[if gt IE 8]><!-->
-
-<?php
-    session_start();
-    if( (isset( $_SESSION[ 'username' ] )) AND ($_SESSION[ 'username' ] == "dean") )
-    {
-	    //echo "Sorry. You do not have enough authorization to access this level. Redirecting you to back to the home page.";
-        header("Location: deanCP.php");
-    }
-	else if( (isset( $_SESSION[ 'username' ] )) AND ($_SESSION[ 'username' ] != "dean") )
-    {
-	    //echo "Sorry. You do not have enough authorization to access this level. Redirecting you to back to the home page.";
-        header("Location: ./controller/student_login_check.php");
-    }
-?>
-
-
 <html id="courseReg" class="no-js" lang="en"> <!--<![endif]-->
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">

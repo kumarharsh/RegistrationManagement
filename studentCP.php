@@ -8,7 +8,7 @@
 
 <?php
     session_start();
-    if( (!isset( $_SESSION[ 'username' , 'type' ] )) || ($_SESSION[ 'type' ] != "dean") )
+    if( (!isset( $_SESSION[ 'username' , 'type' ] )) || ($_SESSION[ 'type' ] != "student") )
     {
 	    echo "Sorry. You do not have enough authorization to access this level. Redirecting you to back to the home page.";
         header("Location: index.php");
@@ -23,7 +23,7 @@
        More info: h5bp.com/b/378 -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>Dean's Portal : LNMIIT Course Registration</title>
+  <title>Student's Portal : LNMIIT Course Registration</title>
   <meta name="description" content="This is a module for course registration to be used by the institute administration to offer the students with an easy and intutive way of registering for their courses."/>
   <meta name="author" content="Kumar Harsh, Anoop Malav, Pankaj Singhal">
 
@@ -87,12 +87,10 @@
         </section>
       </aside>
 
-      <?php
-        if(!isset($_REQUEST['view']) || $_REQUEST['view']=="home")
-          header('deanCP.php');
-        else if($_REQUEST['view']=="courses")
-          include('widgets/dean/viewCourses.php');
-      ?>
+      <section id="content">
+          <h1>Welcome To Administration Module</h1>
+          <p>You can activate the different stages of the registration process, and also view and approve requests from students</p>
+      </section>
       <footer>
          <?php include("widgets/footer.php"); ?> 
       </footer>

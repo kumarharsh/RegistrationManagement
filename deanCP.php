@@ -8,7 +8,7 @@
 
 <?php
     session_start();
-    if( (!isset( $_SESSION[ 'username' ] )) || ($_SESSION[ 'username' ] != "dean") )
+    if( (!isset( $_SESSION[ 'username' , 'type' ] )) || ($_SESSION[ 'type' ] != "dean") )
     {
 	    echo "Sorry. You do not have enough authorization to access this level. Redirecting you to back to the home page.";
         header("Location: index.php");
