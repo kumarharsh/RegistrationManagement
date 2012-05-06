@@ -8,23 +8,12 @@
 
 <?php
     session_start();
-    if( isset($_SESSION['username']) AND isset($_SESSION['type']) AND $_SESSION[ 'type' ] === "dean" )
+    if( (!isset( $_SESSION[ 'username' ] )) || ($_SESSION[ 'type' ] != "student") )
     {
-	    //echo "Sorry. You do not have enough authorization to access this level. Redirecting you to back to the home page.";
-        header("Location: deanCP.php");
-    }
-    else if( isset($_SESSION['username']) AND isset($_SESSION['type']) AND $_SESSION[ 'type' ] === "faculty" )
-    {
-	    //echo "Sorry. You do not have enough authorization to access this level. Redirecting you to back to the home page.";
-        header("Location: facultyCP.php");
-    }
-    else if( isset($_SESSION['username']) AND isset($_SESSION['type']) AND $_SESSION[ 'type' ] === "student" )
-    {
-	    //echo "Sorry. You do not have enough authorization to access this level. Redirecting you to back to the home page.";
-        header("Location: ./controller/student_login_check.php");
+	    echo "Sorry. You do not have enough authorization to access this level. Redirecting you to back to the home page.";
+        header("Location: index.php");
     }
 ?>
-
 
 <html id="courseReg" class="no-js" lang="en"> <!--<![endif]-->
 <head>
@@ -34,9 +23,9 @@
        More info: h5bp.com/b/378 -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>LNMIIT Course Registration</title>
+  <title>Student's Portal : LNMIIT Course Registration</title>
   <meta name="description" content="This is a module for course registration to be used by the institute administration to offer the students with an easy and intutive way of registering for their courses."/>
-  <meta name="author" content="Kumar Harsh, Pankaj Singhal, Anoop Malav">
+  <meta name="author" content="Kumar Harsh, Anoop Malav, Pankaj Singhal">
 
   <!-- Mobile viewport optimized: j.mp/bplateviewport -->
   <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -49,6 +38,7 @@
   <link rel="stylesheet" href="css/navbar.css"/>
   <link rel="stylesheet" href="css/nivo-slider.css"/>
   <link rel="stylesheet" href="css/nivo-default-theme.css"/>
+  <link rel="stylesheet" href="css/jquery.checkbox.css"/>
   <!-- end CSS-->
 
 
@@ -60,48 +50,53 @@
 
 <body>
   <div id="wrapper">
-
     <header>
       <div class="container_24"> 
         <?php include('widgets/header.php'); ?>
-        <?php include('widgets/topnav.php'); ?>
+        <?php include('widgets/topnav-student.php'); ?>
       </div>
     </header>
 
     <div id="main" class="container_24" role="main">
 
-      <figure id="presentationBox">
-        <span id="slider-overlay-left"></span>
-        <div id="slider" class="nivoSlider theme-default">
-          <img src="css/images/campus-01.jpg" />
-          <img src="css/images/campus-02.jpg" />
-          <img src="css/images/campus-03.jpg" />
-          <img src="css/images/campus-04.jpg" />
-        </div>
-        <span id="slider-overlay-right"></span>
-      </figure>
-
       <aside id="main-sidebar">
-        <h1>Login</h1>
-        <form id="login-form" method="post" action="controller/login.php" class="styled-form">
-              <p class="form-error"></p>
-              <label for="username">User ID</label>
-              <input id="username" type="text" name="username" value="" />
-              <label for="password">Password</label>
-              <input id="password" type="password" name="password" value="" />
-              <button type="submit" name="loginSubmit">Login</button>
-            <p><a href="#">Forgot your password?</a></p>
-        </form>
+        <h1>Welcome, Mr. <?php  $id=$_SESSION[ 'username' ];
+							    $con = mysql_connect("localhost","root","");
+								if (!$con)
+								{
+								  die('Could not connect: ' . mysql_error());
+								}
+								
+								mysql_select_db("dbms", $con);
+									
+								$sql="select * from student where username='$id'" ;
+								$result=mysql_query($sql);
+								$row = mysql_fetch_array($result); 
+								echo $row['fname'];
+								mysql_close($con);
+						 ?></h1>
+        <h3>Today is <span id="todayDate"></h3>
+        
+        <section id="control-panel">
+        <h2>Current Stage going on:</h2>
+        
+          <h3 id="current-stage">
+          <?php
+            include ('controller/stageCodes.php');
+            $conf = fopen('controller/processStage.conf','r');
+            fseek($conf, -1, SEEK_END);
+            $cs = fgetc($conf);
+            echo $stageNames[$cs];
+            fclose($conf);
+          ?>
+          </h3>
+        </section>
       </aside>
 
       <section id="content">
-        <h1>Welcome To Course Registration</h1>
-        <p>Hello all. Here you are provided with the portal of online Course Registration of every semester in The LNMIIT. Hope you get all your desired & required Courses. :)</p>
-        <h1>Vision</h1>
-        <p>To establish a World class platform for creation, dissemination, and application of knowledge in the field of Information Technology through research, pedagogy, and consultation, as well as to become an effective catalyst for technological and societal development of the country through interactions with industries and academia.</p>
+          <h1>Welcome To Administration Module</h1>
+          <p>You can activate the different stages of the registration process, and also view and approve requests from students</p>
       </section>
-
-
       <footer>
          <?php include("widgets/footer.php"); ?> 
       </footer>
@@ -118,31 +113,49 @@
   <script type="text/javascript" src="js/modernizr-2.0.6.min.js"></script>
   <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
   <script type="text/javascript" src="js/jquery-ui-1.8.18.min.js"></script>
-  <script type="text/javascript" src="js/jquery.nivo.slider.pack.js"></script>
-  <script type="text/javascript">
+
+  <script type='text/javascript' src='js/jquery.checkbox.min.js'></script>
+  <script type='text/javascript'>
     $(window).load(function() {
-        $('#slider').nivoSlider();
-        $('#login-form').submit(function(e) {
-            e.preventDefault();
-            var postUrl = $(this).attr("action");
-            var request = $.ajax({
-                type: 'POST',
-                url: postUrl,
-                data: $(this).serialize()
-            })
-            request.done(function(response) {
-                if(response.status==="success") {
-                    window.location.href = response.access;
-                }
-                else {
-                    $('.form-error').show().html(response.message);
-                }            
-            });
+        $('#todayDate').text(getToday());
+        $('form.switches input:radio').checkbox();
+        $('form.switches input:radio:nth(<?php echo $cs-1 ?>)').attr('checked','checked');
+
+        $('#form-stage').submit(function(e) {
+          e.preventDefault();
+          var postUrl = $(this).attr('action');
+          var request = $.ajax({
+            type: 'POST',
+            url: postUrl,
+            data: $(this).serialize(),
+            beforeSend: function() {
+              return confirm('Start a new stage?');
+            }
+          })
+          request.done(function(response) {
+            if(response.status=='success') {
+              $('#current-stage').html(response.stage);
+            }
+            else {
+              alert(response.message);
+            }
+          });
         });
     });
   </script>
+  <script type='text/javascript'>
+    function getToday() {
+      var currentTime = new Date();
+      var month = currentTime.getMonth() + 1;
+      var day = currentTime.getDate();
+      var year = currentTime.getFullYear();
+      return day + '/' + month + '/' + year;
+    }
+  </script>
+?>
+
   <!-- end scripts-->
-	
+  
 
   <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
        chromium.org/developers/how-tos/chrome-frame-getting-started -->

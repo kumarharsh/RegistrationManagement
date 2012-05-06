@@ -14,6 +14,7 @@
     {
         session_start();
         $_SESSION[ 'username' ] = $_POST['username'];
+		$_SESSION['type'] = "dean";
         /* if a record is found, login as DEAN and redirect */
         $response = array("status" => "success", "access" => "deanCP.php");
         header('Content-type: application/json');
@@ -29,6 +30,7 @@
     {
         session_start();
         $_SESSION[ 'username' ] = $_POST['username'];
+		$_SESSION['type'] = "faculty";
         $response = array("status" => "success", "access" => "facultyCP.php");
         header('Content-type: application/json');
         echo json_encode($response);
@@ -43,6 +45,7 @@
     {
         session_start();
         $_SESSION[ 'username' ] = $_POST['username'];
+		$_SESSION['type'] = "student";
         $response = array("status" => "success", "access" => "studentCP.php");
         header('Content-type: application/json');
         echo json_encode($response);

@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if( (!isset( $_SESSION[ 'username' ] )) || ($_SESSION[ 'username' ] == "dean") )
+    if( (!isset( $_SESSION[ 'username' ] )) || ($_SESSION[ 'type' ] != "student") )
     {
         echo "You are not authorized...";
         exit;
@@ -17,7 +17,7 @@
 
     $sql="SELECT name FROM session WHERE flag=1";
     $result=mysql_query($sql,$con);
-    $row = mysql_fetch_array($result);
+    $row = mysql_query($result);
 
     /* Replacing the if-else ladder with switch statement.
         if something goes wrong, it will be because the $row[name] is not set.

@@ -8,7 +8,7 @@
 
 <?php
     session_start();
-    if( (!isset( $_SESSION[ 'username' ] )) || ($_SESSION[ 'username' ] != "dean") )
+    if( (!isset( $_SESSION[ 'username' ] )) || ($_SESSION[ 'type' ] != "dean") )
     {
 	    echo "Sorry. You do not have enough authorization to access this level. Redirecting you to back to the home page.";
         header("Location: index.php");
@@ -60,7 +60,21 @@
     <div id="main" class="container_24" role="main">
 
       <aside id="main-sidebar">
-        <h1>Welcome, Mr. Singh</h1>
+        <h1>Welcome,</br> Mr. <?php  $id=$_SESSION[ 'username' ];
+							    $con = mysql_connect("localhost","root","");
+								if (!$con)
+								{
+								  die('Could not connect: ' . mysql_error());
+								}
+								
+								mysql_select_db("dbms", $con);
+									
+								$sql="select * from dean where username='$id'" ;
+								$result=mysql_query($sql);
+								$row = mysql_fetch_array($result); 
+								echo $row['fname'];
+								mysql_close($con);
+						 ?></h1>
         <h3>Today is <span id="todayDate"></h3>
         
         <section id="control-panel">
