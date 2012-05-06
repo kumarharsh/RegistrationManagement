@@ -56,3 +56,23 @@
       background-position: 0 -30px; }
     .styled-form button:active {
       background-position: 0 -60px; }
+
+.switches button {
+  height: 22px;
+  width: 60px;
+  margin-top: 5px;
+  color: #FFFFFF;
+  font-size: 14px;
+  font-family: "Calluna", "Trebuchet MS", Verdana, sans-serif;
+  line-height: 21px;
+  text-align: center;
+  cursor: pointer;
+  background: #006cff url("images/sprite-map.png") 0 0px no-repeat;
+  border: 1px solid #004acc;
+  border-radius: 2px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px; }
+  .switches button:hover {
+    background-position: 0 -30px; }
+  .switches button:active {
+    background-position: 0 -60px; }

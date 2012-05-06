@@ -31,7 +31,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>LNMIIT Course Registration</title>
   <meta name="description" content="This is a module for course registration to be used by the institute administration to offer the students with an easy and intutive way of registering for their courses."/>
-  <meta name="author" content="Kumar Harsh, Pankaj Singhal, Anoop Malav">
+  <meta name="author" content="Kumar Harsh, Anoop Malav, Pankaj Singhal">
 
   <!-- Mobile viewport optimized: j.mp/bplateviewport -->
   <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -65,35 +65,21 @@
 
     <div id="main" class="container_24" role="main">
 
-      <figure id="presentationBox">
-        <span id="slider-overlay-left"></span>
-        <div id="slider" class="nivoSlider theme-default">
-          <img src="css/images/campus-01.jpg" />
-          <img src="css/images/campus-02.jpg" />
-          <img src="css/images/campus-03.jpg" />
-          <img src="css/images/campus-04.jpg" />
-        </div>
-        <span id="slider-overlay-right"></span>
-      </figure>
-
-      <aside id="main-sidebar">
-        <h1>Login</h1>
-        <form id="login-form" method="post" action="controller/login.php" class="styled-form">
-              <p class="form-error"></p>
-              <label for="username">User ID</label>
-              <input id="username" type="text" name="username" value="" />
-              <label for="password">Password</label>
-              <input id="password" type="password" name="password" value="" />
-              <button type="submit" name="loginSubmit">Login</button>
-            <p><a href="#">Forgot your password?</a></p>
-        </form>
-      </aside>
-
       <section id="content">
-        <h1>Welcome To Course Registration</h1>
-        <p>Hello all. Here you are provided with the portal of online Course Registration of every semester in The LNMIIT. Hope you get all your desired & required Courses. :)</p>
-        <h1>Vision</h1>
-        <p>To establish a World class platform for creation, dissemination, and application of knowledge in the field of Information Technology through research, pedagogy, and consultation, as well as to become an effective catalyst for technological and societal development of the country through interactions with industries and academia.</p>
+        <h1>About The Website</h1>
+        <p>This website is a prototype-version of a course registration management system, which can be implemented in an educational institute. The website offers a 3-way functionality: the faculty can float courses, the students can view and select the courses of their choice, and the administration, or Dean, maintains a bird's eye view of the whole process and gets to approve special academic cases.</p>
+        <p>The website is made in PHP/HTML5 with AJAX. The website has been made as easy to use as possible for all the three parties.</p> 
+        <h1>About Us</h1>
+        <p>The team comprises of 
+            <ul>
+                <li>Kumar Harsh (y08uc072)</li>
+                <li>Anoop Malav (y08uc029)</li>
+                <li>Pankaj Singhal (y09uc105)</li>
+                <li>Gaurav Jain</li>
+                <li>Gaurav Singh</li>
+            </ul>
+        All of us are students of LNMIIT, and this project is made as a compulsory part of the Software Engineering course held in Spring Semester, 2012.
+        </p>
       </section>
 
 

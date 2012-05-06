@@ -15,70 +15,6 @@
     }
 ?>
 
-
-<?php
-    $con = mysql_connect("localhost","root","");
-    if (!$con)
-    {
-        die('Could not connect: ' . mysql_error());
-    }
-    mysql_select_db("dbms", $con);
-	
-    $sql="select flag FROM session WHERE name='registration'" ;
-    $result=mysql_query($sql);
-    $row = mysql_fetch_array($result);
-    $reg=$row['flag'];
-
-    $sql="select flag FROM session WHERE name='drop'" ;
-    $result=mysql_query($sql);
-    $row = mysql_fetch_array($result);
-    $drop=$row['flag'];
-
-    $sql="select flag FROM session WHERE name='add'" ;
-    $result=mysql_query($sql);
-    $row = mysql_fetch_array($result);
-    $add=$row['flag'];
-
-    $sql="select flag FROM session WHERE name='overload'" ;
-    $result=mysql_query($sql);
-    $row = mysql_fetch_array($result);
-    $overload=$row['flag'];
-
-    if($reg==1) {
-        $status="Registration";
-    } else if($drop==1) {
-        $status="Drop";
-    } else if($add==1) {
-        $status="Add";
-    } else if($overload==1) {
-        $status="Overload";
-    }
-        
-    if($reg==0) {
-        $reg1="Start Registration Stage";
-    } else {
-        $reg1="End Registration Stage";
-    }
-    if($drop==0) {
-        $drop1="Start Drop Stage";
-    } else {
-        $drop1="End Drop Stage";
-    }
-    if($add==0) {
-        $add1="Start Add Stage";
-    } else {
-        $add1="End Add Stage";
-    }
-    if($overload==0) {
-        $overload1="Start Overload Stage";
-    } else {
-        $overload1="Stop Overload Stage";
-    }
-    mysql_close($con);
-?>
-
-
-
 <html id="courseReg" class="no-js" lang="en"> <!--<![endif]-->
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -89,7 +25,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>Dean's Portal : LNMIIT Course Registration</title>
   <meta name="description" content="This is a module for course registration to be used by the institute administration to offer the students with an easy and intutive way of registering for their courses."/>
-  <meta name="author" content="Anoop Malav, Kumar Harsh, Pankaj Singhal">
+  <meta name="author" content="Kumar Harsh, Anoop Malav, Pankaj Singhal">
 
   <!-- Mobile viewport optimized: j.mp/bplateviewport -->
   <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -128,12 +64,25 @@
         <h3>Today is <span id="todayDate"></h3>
         
         <section id="control-panel">
-        <h2>Control Panel</h2>
-            <form id="stage-activator">
-                <p><label><input name="status.1" value="1" type="radio" checked="checked">Registration</label></p>
-                <p><label><input name="status.1" value="2" type="radio">Drop</label></p>
-                <p><label><input name="status.1" value="3" type="radio">Add</label></p>
-                <p><label><input name="status.1" value="4" type="radio">Overload</label></p>
+        <h2>Current Stage</h2>
+        
+          <h3 id="current-stage">
+          <?php
+            include ('controller/stageCodes.php');
+            $conf = fopen('controller/processStage.conf','r');
+            fseek($conf, -1, SEEK_END);
+            $cs = fgetc($conf);
+            echo $stageNames[$cs];
+            fclose($conf);
+          ?>
+          </h3>
+
+            <form id="form-stage" class="switches" method="post" action="controller/switchStage.php">
+                <p><label><input name="stage" value="1" type="radio">Registration</label></p>
+                <p><label><input name="stage" value="2" type="radio">Drop</label></p>
+                <p><label><input name="stage" value="3" type="radio">Add</label></p>
+                <p><label><input name="stage" value="4" type="radio">Overload</label></p>
+                <button type="submit" name="switch-stage">Set</button>
             </form>
         </section>
       </aside>
@@ -142,9 +91,6 @@
         <h1>Welcome To Administration Module</h1>
         <p>You can activate the different stages of the registration process, and also view and approve requests from students</p>
       </section>
-
-
-
 
       <footer>
          <?php include("widgets/footer.php"); ?> 
@@ -168,10 +114,32 @@
     $(window).load(function() {
         $('#slider').nivoSlider();
         $('#todayDate').text(getToday());
-        $('input:radio').checkbox();
+        $('form.switches input:radio').checkbox();
+        $('form.switches input:radio:nth(<?php echo $cs-1 ?>)').attr('checked','checked');
+
+        $('#form-stage').submit(function(e) {
+          e.preventDefault();
+          var postUrl = $(this).attr("action");
+          var request = $.ajax({
+            type: 'POST',
+            url: postUrl,
+            data: $(this).serialize(),
+            beforeSend: function() {
+              return confirm("Start a new stage?");
+            }
+          })
+          request.done(function(response) {
+            if(response.status=="success") {
+              $("#current-stage").html(response.stage);
+            }
+            else {
+              alert(response.message);
+            }
+          });
+        });
     });
   </script>
-  <script language="JavaScript">
+  <script type="text/javascript">
     function getToday() {
       var currentTime = new Date();
       var month = currentTime.getMonth() + 1;
@@ -193,5 +161,3 @@
 
 </body>
 </html>
-
-
