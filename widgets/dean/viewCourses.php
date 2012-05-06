@@ -1,3 +1,4 @@
+<h1>Offered Courses</h1>
 <?php
     $con = mysql_connect("localhost","root","");
     if (!$con)
@@ -15,18 +16,21 @@
     } 
     else
     {
-        echo '<table>
-        <tr>
-        <th scope="col" abbr="Configurations" class="nobg">Course Id</th>
-        <th scope="col">Course Name</th>
-        <th scope="col">Credits</th>
-        <th scope="col">Type</th>
+        echo '<table id="courses">
+        <thead>
+          <tr>
+            <th scope="col" abbr="Configurations" class="nobg">Course Id</th>
+            <th scope="col">Course Name</th>
+            <th scope="col">Credits</th>
+            <th scope="col">Type</th>
 
-        <th scope="col">Instructor</th>
-        <th scope="col">Program</th>
-        <th scope="col">Maximum number of seats</th>
-        <th scope="col">Available Seats</th>
-        </tr>';
+            <th scope="col">Instructor</th>
+            <th scope="col">Program</th>
+            <th scope="col">Maximum number of seats</th>
+            <th scope="col">Available Seats</th>
+        </tr>
+        </thead>
+        <tbody>';
         while($row)
         {
             echo "<tr>";
@@ -42,8 +46,14 @@
             echo "</tr>";
             $row = mysql_fetch_array($result);
         }
-        echo "</table>";
+        echo "</tbody>
+        </table>";
     }
     mysql_close($con);
 ?>
 
+  <script type='text/javascript'>
+    $(document).ready(function() {
+        $('#courses').dataTable();
+    });
+  </script>

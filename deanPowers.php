@@ -39,7 +39,14 @@
   <link rel="stylesheet" href="css/nivo-slider.css"/>
   <link rel="stylesheet" href="css/nivo-default-theme.css"/>
   <link rel="stylesheet" href="css/jquery.checkbox.css"/>
+  <link rel="stylesheet" href="css/jquery.dataTables.css"/>
+
   <!-- end CSS-->
+  <script type="text/javascript" src="js/modernizr-2.0.6.min.js"></script>
+  <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+  <script type="text/javascript" src="js/jquery-ui-1.8.18.min.js"></script>
+  <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+  <script type='text/javascript' src='js/jquery.checkbox.min.js'></script>
 
 
   <!-- All JavaScript at the bottom, except for Modernizr / Respond.
@@ -59,39 +66,17 @@
 
     <div id="main" class="container_24" role="main">
 
-      <aside id="main-sidebar">
-        <h1>Welcome, Mr. Singh</h1>
-        <h3>Today is <span id="todayDate"></h3>
-        
-        <section id="control-panel">
-        <h2>Current Stage</h2>
-        
-          <h3 id="current-stage">
-          <?php
-            include ('controller/stageCodes.php');
-            $conf = fopen('controller/processStage.conf','r');
-            fseek($conf, -1, SEEK_END);
-            $cs = fgetc($conf);
-            echo $stageNames[$cs];
-            fclose($conf);
-          ?>
-          </h3>
-
-            <form id="form-stage" class="switches" method="post" action="controller/switchStage.php">
-                <p><label><input name="stage" value="1" type="radio">Registration</label></p>
-                <p><label><input name="stage" value="2" type="radio">Drop</label></p>
-                <p><label><input name="stage" value="3" type="radio">Add</label></p>
-                <p><label><input name="stage" value="4" type="radio">Overload</label></p>
-                <button type="submit" name="switch-stage">Set</button>
-            </form>
-        </section>
-      </aside>
-
       <?php
         if(!isset($_REQUEST['view']) || $_REQUEST['view']=="home")
           header('deanCP.php');
         else if($_REQUEST['view']=="courses")
           include('widgets/dean/viewCourses.php');
+        else if($_REQUEST['view']=="courses") {
+            if($_REQUEST['sort']=="student")
+              include('widgets/dean/infoStudent.php');
+            if($_REQUEST['sort']=="course")
+              include('widgets/dean/infoCourse.php');
+        }
       ?>
       <footer>
          <?php include("widgets/footer.php"); ?> 
@@ -106,49 +91,6 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.2.min.js"><\/script>')</script>
  -->
-  <script type="text/javascript" src="js/modernizr-2.0.6.min.js"></script>
-  <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
-  <script type="text/javascript" src="js/jquery-ui-1.8.18.min.js"></script>
-
-  <script type='text/javascript' src='js/jquery.checkbox.min.js'></script>
-  <script type='text/javascript'>
-    $(window).load(function() {
-        $('#todayDate').text(getToday());
-        $('form.switches input:radio').checkbox();
-        $('form.switches input:radio:nth(<?php echo $cs-1 ?>)').attr('checked','checked');
-
-        $('#form-stage').submit(function(e) {
-          e.preventDefault();
-          var postUrl = $(this).attr('action');
-          var request = $.ajax({
-            type: 'POST',
-            url: postUrl,
-            data: $(this).serialize(),
-            beforeSend: function() {
-              return confirm('Start a new stage?');
-            }
-          })
-          request.done(function(response) {
-            if(response.status=='success') {
-              $('#current-stage').html(response.stage);
-            }
-            else {
-              alert(response.message);
-            }
-          });
-        });
-    });
-  </script>
-  <script type='text/javascript'>
-    function getToday() {
-      var currentTime = new Date();
-      var month = currentTime.getMonth() + 1;
-      var day = currentTime.getDate();
-      var year = currentTime.getFullYear();
-      return day + '/' + month + '/' + year;
-    }
-  </script>
-?>
 
   <!-- end scripts-->
   
