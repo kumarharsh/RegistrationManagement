@@ -39,6 +39,7 @@
   <link rel="stylesheet" href="css/nivo-slider.css"/>
   <link rel="stylesheet" href="css/nivo-default-theme.css"/>
   <link rel="stylesheet" href="css/jquery.checkbox.css"/>
+  <link rel="stylesheet" href="css/jquery.dataTables.css"/>
   <!-- end CSS-->
 
 
@@ -60,7 +61,7 @@
     <div id="main" class="container_24" role="main">
 
       <aside id="main-sidebar">
-        <h1>Welcome, Mr. <?php  $id=$_SESSION[ 'username' ];
+        <h1>Welcome, <?php  $id=$_SESSION[ 'username' ];
 							    $con = mysql_connect("localhost","root","");
 								if (!$con)
 								{
@@ -97,8 +98,65 @@
       </aside>
 
       <section id="content">
-          <h1>Welcome To Administration Module</h1>
+          <h1>Welcome To Student Module</h1>
           <p>You can activate the different stages of the registration process, and also view and approve requests from students</p>
+        
+          <h2>Your Courses</h2>
+          <?php
+          $con = mysql_connect("localhost","root","") or die('Could not connect: ' . mysql_error());
+          mysql_select_db("dbms", $con);
+          $sql="SELECT * FROM enrollment WHERE sid='".$_SESSION['username']."' AND flag=1";
+          $result=mysql_query($sql,$con) or die ( mysql_error() );
+          $row = mysql_fetch_array($result);
+
+          echo '<table id="courses">
+          <thead>
+            <tr>
+              <th scope="col" abbr="Configurations" class="nobg">Course Id</th>
+              <th scope="col">Course Name</th>
+              <th scope="col">Credits</th>
+              <th scope="col">Type</th>
+   
+              <th scope="col">Instructor</th>
+              <th scope="col">Program</th>
+          </tr>
+          </thead>
+          <tbody>';
+
+          
+          if (!$row)
+          {
+              echo "<tr><td>-</td></tr>";
+          } 
+          else
+          {
+            while($row)
+            {
+              $sql2="SELECT * FROM course WHERE cid=".$row['cid'].";";
+              $result2=mysql_query($sql2,$con);
+              $row2 = mysql_fetch_array($result2);
+       
+              while($row2)
+              {
+                  echo "<tr>";
+                  echo "<td>" . $row2['cid'] . "</td>";
+                  echo "<td>" . $row2['cname'] . "</td>";
+                  echo "<td>" . $row2['credits'] . "</td>";
+                  echo "<td>" . $row2['type'] . "</td>";
+       
+                  echo "<td>" . $row2['iname'] . "</td>";
+                  echo "<td>" . $row2['program'] . "</td>";
+                  echo "</tr>";
+                  $row2 = mysql_fetch_array($result2);
+              }
+              $row = mysql_fetch_array($result);
+            }
+            echo "</tbody>
+            </table>";
+          }
+          mysql_close($con);
+      ?>
+
       </section>
       <footer>
          <?php include("widgets/footer.php"); ?> 
@@ -117,12 +175,14 @@
   <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
   <script type="text/javascript" src="js/jquery-ui-1.8.18.min.js"></script>
 
+  <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
   <script type='text/javascript' src='js/jquery.checkbox.min.js'></script>
   <script type='text/javascript'>
     $(window).load(function() {
         $('#todayDate').text(getToday());
         $('form.switches input:radio').checkbox();
         $('form.switches input:radio:nth(<?php echo $cs-1 ?>)').attr('checked','checked');
+        $('#courses').dataTable();
 
         $('#form-stage').submit(function(e) {
           e.preventDefault();

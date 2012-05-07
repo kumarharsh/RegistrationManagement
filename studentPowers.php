@@ -79,7 +79,7 @@
 		else if($_REQUEST['view']=="add")
           include('widgets/student/addCourses.php');
         else if($_REQUEST['view']=="overload")
-          include('widgets/student/overCourses.php');
+          include('widgets/student/overloadCourses.php');
         
       ?>
       </section>

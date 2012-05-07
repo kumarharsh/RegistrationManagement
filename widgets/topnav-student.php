@@ -2,7 +2,8 @@
    <ul id="nav-container" class="nav-container">
       <li><a class="item-primary" href="studentCP.php">Home</a></li>
 
-      <li><a class="item-primary" href="studentPowers.php?view=courses">View Done Courses</a></li>
+<!--      <li><a class="item-primary" href="studentPowers.php?view=courses">View Done Courses</a></li>
+-->
 
       <li><a class="item-primary" href="studentPowers.php?view=reg">Register courses</a></li>
 

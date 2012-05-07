@@ -14,7 +14,7 @@
       <li><a href="alter.php" class="item-primary">Alter Courses</a>
         <ul style="width:150px">
           <li><a href="deanPowers.php?view=alter&mode=add">Add Courses</a></li>
-          <li><a href="deanPowers.php?view=alter&mode=mod">Modify Courses</a></li>
+<!--          <li><a href="deanPowers.php?view=alter&mode=mod">Modify Courses</a></li> -->
           <li><a href="deanPowers.php?view=alter&mode=del">Delete Courses</a></li>
         </ul>
       </li>

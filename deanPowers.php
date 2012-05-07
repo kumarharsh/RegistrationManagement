@@ -86,6 +86,8 @@
             else if($_REQUEST['mode']=="del")
               include('widgets/dean/delCourseForm.php');
         }
+        else if($_REQUEST['view']=="overload")
+            include('widgets/dean/overloadRequests.php');
         
       ?>
       </section>

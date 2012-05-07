@@ -48,7 +48,7 @@
         }
         echo "</tbody>
         </table>
-        <button type='submit' name='course-mod-submit'>Register</button>
+        <button type='submit' name='course-mod-submit'>Add</button>
         </form>";
     }
     mysql_close($con);

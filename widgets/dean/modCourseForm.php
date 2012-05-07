@@ -50,7 +50,7 @@
 
         $('#course-mod-form').submit(function(e) {
             $("#form-modify-error").html(' ').hide();
-//            e.preventDefault();
+            e.preventDefault();
             var postUrl = $(this).attr("action");
             var request = $.ajax({
                 type: 'POST',
