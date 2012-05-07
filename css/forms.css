@@ -16,6 +16,8 @@
 .styled-form {
   margin: 0 auto;
   width: 200px; }
+  .styled-form.stretch {
+    width: 100%; }
   .styled-form .form-error {
     display: none;
     padding: 2px;

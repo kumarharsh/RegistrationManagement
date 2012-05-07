@@ -1,7 +1,7 @@
 <h1>Add Course</h1>
 <form id="course-add-form" action="controller/addCourse.php" method="post" class="styled-form">
     <p>Fill in the form to add a new course</p>
-    <p class="form-error"></p>
+    <p id="form-error" class="form-error"></p>
     <label for="cid">Course ID</label>
     <input id="cid" type="text" name="cid" value="" />
     <label for="cname">Course Name</label>
@@ -14,7 +14,6 @@
     <input id="faculty" type="text" name="faculty" value="" />
     <label for="max_seat">Max Seats</label>
     <input id="max_seat" type="text" name="max_seat" value="" />
-
     <label>Program</label>
     <label><input type="checkbox" name="program[]" value="UG"/>Undergraduate</label>
     <label><input type="checkbox" name="program[]" value="PG"/>Postgraduate</label>
@@ -24,6 +23,7 @@
   <script type='text/javascript'>
     $(document).ready(function() {
         $('#course-add-form').submit(function(e) {
+            $("#form-error").html(' ').hide();
             e.preventDefault();
             var postUrl = $(this).attr("action");
             var request = $.ajax({
@@ -32,9 +32,8 @@
                 data: $(this).serialize()
             })
             request.done(function(response) {
-                console.log(response);
                 if(response.status=='error') {
-                  $(".form-error").show().html(response.message);
+                  $("#form-error").show().html(response.message);
                 }
                 else {
                   alert(response.message);

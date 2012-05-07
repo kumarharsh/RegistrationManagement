@@ -67,8 +67,8 @@ div#main {
         }            
     }
     section#content {
-        width:740px;
         &.stretch { width:100%; }
+        width:740px;
         p { text-align:justify; }
         margin-bottom:20px;
     }
