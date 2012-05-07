@@ -25,6 +25,9 @@
         border: 1px solid $text-lowlight;
         &:hover, &:focus { border-color:$border-highlight; }
     }
+    input[type="checkbox"] {
+        width:30px;
+    }
     button {
         width:62px;
         height:28px;

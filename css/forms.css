@@ -37,6 +37,8 @@
     border: 1px solid #333333; }
     .styled-form input:hover, .styled-form input:focus, .styled-form textarea:hover, .styled-form textarea:focus {
       border-color: #006cff; }
+  .styled-form input[type="checkbox"] {
+    width: 30px; }
   .styled-form button {
     width: 62px;
     height: 28px;
