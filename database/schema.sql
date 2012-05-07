@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 3.2.0.1
+-- version 3.4.5
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 22, 2012 at 08:26 AM
--- Server version: 5.1.36
--- PHP Version: 5.3.0
+-- Generation Time: May 07, 2012 at 05:48 AM
+-- Server version: 5.5.16
+-- PHP Version: 5.3.8
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -26,7 +27,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 
 CREATE TABLE IF NOT EXISTS `course` (
-  `cid` varchar(10) NOT NULL,
+  `cid` varchar(20) NOT NULL,
   `cname` varchar(50) NOT NULL,
   `credits` int(10) NOT NULL DEFAULT '4',
   `type` varchar(50) NOT NULL DEFAULT 'compulsory ',
@@ -42,11 +43,13 @@ CREATE TABLE IF NOT EXISTS `course` (
 --
 
 INSERT INTO `course` (`cid`, `cname`, `credits`, `type`, `iname`, `program`, `max_seat`, `avai_seat`) VALUES
-('100', 'dwdm', 4, 'compulsory ', 'bv', 'UG', 150, 146),
-('11', 'asd', 2, 'HSS', 'rajbala', 'UG', 150, 142),
-('14', 'Theory Of computation', 4, 'compulsory ', 'Bhanukiran Vinzamuri', 'UG', 150, 18),
-('2', 'swe', 4, 'compulsory ', 'ravi', 'UG', 150, 143),
-('7', 'os', 4, 'compulsory ', 'gaurav somani', 'UG', 150, 149);
+('', '', 0, '', '', 'UG', 0, 0),
+('11', 'asd', 2, 'HSS', 'rajbala', 'UG', 150, 141),
+('14', 'toc', 4, 'compulsory ', 'Bhanukiran Vinzamuri', 'UG', 150, 17),
+('2', 'swe', 4, 'compulsory ', 'ravi', 'UG', 150, 142),
+('56', 'Eco', 4, 'Elective', 'NM', 'UG/PG', 50, 49),
+('7', 'os', 4, 'compulsory ', 'gaurav somani', 'UG', 150, 149),
+('77', 'ComGraph', 4, 'Compulsory', 'GG', 'UG', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -98,8 +101,12 @@ INSERT INTO `enrollment` (`sid`, `cid`, `flag`) VALUES
 ('y09uc001', '7', 0),
 ('y09uc001', '14', 0),
 ('y09uc001', '14', 0),
-('y09uc001', '11', 1),
-('y09uc001', '2', 1);
+('y09uc001', '11', 0),
+('', '2', 1),
+('y09uc001', '56', 1),
+('y09uc001', '2', 1),
+('y09uc001', '14', 1),
+('y09uc001', '11', 1);
 
 -- --------------------------------------------------------
 
@@ -141,7 +148,7 @@ CREATE TABLE IF NOT EXISTS `overload` (
   `application` varchar(100) NOT NULL,
   `is_approved` int(10) NOT NULL,
   PRIMARY KEY (`rid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
 
 --
 -- Dumping data for table `overload`
@@ -149,29 +156,16 @@ CREATE TABLE IF NOT EXISTS `overload` (
 
 INSERT INTO `overload` (`rid`, `sid`, `cid`, `application`, `is_approved`) VALUES
 (7, 'y09uc001', '100', 'jhdbcshdbcshdb', 0),
-(8, 'y09uc001', '100', 'hwdbvjchd cjhdjvhe', 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `session`
---
-
-CREATE TABLE IF NOT EXISTS `session` (
-  `name` varchar(20) NOT NULL,
-  `flag` int(10) NOT NULL,
-  PRIMARY KEY (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `session`
---
-
-INSERT INTO `session` (`name`, `flag`) VALUES
-('add', 0),
-('drop', 0),
-('overload', 0),
-('registration', 0);
+(8, 'y09uc001', '100', 'hwdbvjchd cjhdjvhe', 0),
+(9, 'y09uc001', '11', '', 0),
+(10, 'y09uc001', '11', '', 0),
+(11, 'y09uc001', '11', '12', 0),
+(12, 'y09uc001', '11', '12', 0),
+(13, 'y09uc001', '11', '12', 0),
+(14, 'y09uc001', '11', '12', 0),
+(15, 'y09uc001', '2', '12', 0),
+(16, 'y09uc001', '2', '2', 0),
+(17, 'y09uc001', '11', 'asd', 0);
 
 -- --------------------------------------------------------
 
@@ -205,3 +199,7 @@ INSERT INTO `student` (`sid`, `username`, `password`, `fname`, `CPI`, `branch`, 
 ('003', 'y09uc003', '003', 'mohit', 6.8, 'ece', 'PG', '', '0000-00-00', 0, '', ''),
 ('004', 'y09uc004', '004', 'nikhil', 7.9, 'cce', 'UG', '', '0000-00-00', 0, '', ''),
 ('005', 'y09uc005', '005', 'gaurav', 8.2, 'cse', 'UG', '', '0000-00-00', 0, '', '');
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
