@@ -4,12 +4,15 @@
 
       <li><a class="item-primary" href="studentPowers.php?view=courses">View Done Courses</a></li>
 
-      <li><a class="item-primary" href="studentPowers.php?view=add">Add courses</a></li>
+      <li><a class="item-primary" href="studentPowers.php?view=reg">Register courses</a></li>
 
-      <li><a class="item-primary" href="studentPowers.php?view=drop">Drop Courses</a></li>
-      
-      <li><a class="item-primary" href="studentPowers.php?view=add1">Add Courses</a></li>
-            
+      <li><a class="item-primary" href="#">Add/Drop Session</a>
+         <ul style="width:150px;">
+             <li><a href="studentPowers.php?view=drop">Drop Courses</a></li>
+             <li><a href="studentPowers.php?view=add">Add Courses</a></li>
+         </ul>
+      </li>
+
       <li><a class="item-primary" href="studentPowers.php?view=overload">Overload</a></li>
       <li><a class="item-primary" href="controller/logout.php">Logout</a></li>
     </ul>   
