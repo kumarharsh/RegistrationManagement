@@ -33,8 +33,10 @@
                     alert(response.message);
                 }
                 else {
-                  $('#course-info').dataTable( response.data ).show();
-                  $('#course-name').html(response.name).show();
+                    $('#course-name').html(response.name).show();
+                    $('#course-info').dataTable().fnDestroy();
+                    $('#course-info').dataTable(response.data).show();
+                    $('#course-info').css("width","100%");  // to fix the weird bug that makes the table of width 148px
                 }
             });
         });
